@@ -29,6 +29,7 @@ class Transfer
   end
 
   def reverse_transfer
+    binding.pry
     if self.status = "complete"
       @sender = @last_transfer[0]
       @receiver = @last_transfer[1]
