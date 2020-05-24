@@ -30,7 +30,7 @@ class Transfer
 
   def reverse_transfer
     binding.pry
-    if self.status = "complete"
+    if self.status == "complete"
       @sender = @last_transfer[0]
       @receiver = @last_transfer[1]
       @amount = @last_transfer[2]
