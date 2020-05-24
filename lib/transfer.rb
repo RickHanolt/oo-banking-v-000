@@ -2,7 +2,7 @@ require 'pry'
 
 class Transfer
   attr_reader :sender, :receiver, :amount
-  attr_accessor :status
+  attr_accessor :status, :last_transfer
 
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -20,7 +20,7 @@ class Transfer
       sender.balance -= @amount
       receiver.balance += @amount
       @status = "complete"
-      last_transfer = [sender, receiver, amount]
+      @last_transfer = [sender, receiver, amount]
     else
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
@@ -29,9 +29,9 @@ class Transfer
   end
 
   def reverse_transfer
-    @sender = last_transfer[0]
-    @receiver = last_transfer[1]
-    @amount = last_transfer[2]
+    @sender = @last_transfer[0]
+    @receiver = @last_transfer[1]
+    @amount = @last_transfer[2]
     @sender += @amount
     @receiver -= @amount
   end
