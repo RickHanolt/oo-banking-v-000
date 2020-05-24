@@ -24,10 +24,15 @@ class Transfer
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
     end
+
+    if @status = "complete"
+      last_transfer = [sender, receiver, amount]
+    end
+    
   end
 
   def reverse_transfer
 
-  end 
+  end
 
 end
