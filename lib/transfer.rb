@@ -20,13 +20,10 @@ class Transfer
       sender.balance -= @amount
       receiver.balance += @amount
       @status = "complete"
+      last_transfer = [sender, receiver, amount]
     else
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
-    end
-
-    if @status = "complete"
-      last_transfer = [sender, receiver, amount]
     end
 
   end
