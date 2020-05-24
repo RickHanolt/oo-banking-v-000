@@ -28,11 +28,14 @@ class Transfer
     if @status = "complete"
       last_transfer = [sender, receiver, amount]
     end
-    
+
   end
 
   def reverse_transfer
-
+    sender = last_transfer[0]
+    receiver = last_transfer[1]
+    amount = last_transfer[2]
+    @sender += amount
   end
 
 end
